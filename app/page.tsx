@@ -4,7 +4,6 @@ import { Input } from "./_components/ui/input"
 import { Button } from "./_components/ui/button"
 import { SearchIcon } from "lucide-react"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/search"
@@ -80,17 +79,6 @@ const Home = async () => {
           ))}
         </div>
       </div>
-
-      {/* Footer  */}
-      <footer>
-        <Card>
-          <CardContent className="px-5 py-6 text-center">
-            <p className="text-sm text-gray-400">
-              Projeto FSW, com alterações feitas por Flavio Gomes
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   )
 }
