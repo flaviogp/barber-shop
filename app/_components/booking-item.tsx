@@ -60,7 +60,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
   const isConfirmed = isFuture(booking.date)
   return (
     <Sheet open={isSheetOpen} onOpenChange={handleSheetOpenChange}>
-      <SheetTrigger className="w-full">
+      <SheetTrigger className="w-full min-w-[90%]">
         <Card className="min-w-[90%]">
           <CardContent className="flex justify-between p-0">
             {/* Left */}
