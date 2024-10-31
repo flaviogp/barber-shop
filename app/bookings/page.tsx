@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../_lib/auth"
 import { notFound } from "next/navigation"
 import BookingItem from "../_components/booking-item"
+import { convertToJson } from "../utils/convert-to-json"
 
 const Bookings = async () => {
   const session = await getServerSession(authOptions)
@@ -63,7 +64,7 @@ const Bookings = async () => {
               Confirmados
             </h2>
             {confirmedBookings.map((booking) => (
-              <BookingItem key={booking.id} booking={booking} />
+              <BookingItem key={booking.id} booking={convertToJson(booking)} />
             ))}
           </>
         )}
@@ -73,7 +74,7 @@ const Bookings = async () => {
               Finalizados
             </h2>
             {concludedBookings.map((booking) => (
-              <BookingItem key={booking.id} booking={booking} />
+              <BookingItem key={booking.id} booking={convertToJson(booking)} />
             ))}
           </>
         )}

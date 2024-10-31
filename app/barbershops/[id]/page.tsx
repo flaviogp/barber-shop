@@ -4,6 +4,7 @@ import SidebarSheet from "@/app/_components/sidebar-sheet"
 import { Button } from "@/app/_components/ui/button"
 import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
 import { db } from "@/app/_lib/prisma"
+import { convertToJson } from "@/app/utils/convert-to-json"
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -90,9 +91,9 @@ const BarberShopPage = async ({ params }: BarberShopPageProp) => {
         <div className="space-y-3">
           {barberShop.services.map((service) => (
             <ServiceItem
-              service={service}
+              service={convertToJson(service)}
               key={service.id}
-              barberShop={barberShop}
+              barberShop={convertToJson(barberShop)}
             />
           ))}
         </div>
