@@ -31,6 +31,7 @@ import {
 } from "./ui/dialog"
 import { deleteBooking } from "../_action/delete-booking"
 import { toast } from "sonner"
+import BookingSummary from "./booking-summary"
 
 interface BookingItemProps {
   booking: Prisma.BookingGetPayload<{
@@ -129,40 +130,13 @@ const BookingItem = ({ booking }: BookingItemProps) => {
           </Badge>
         </div>
 
-        <Card className="mb-6 mt-3">
-          <CardContent className="space-y-3 p-3">
-            <div className="flex items-center justify-between">
-              <h2 className="font-bold">{booking.service.name}</h2>
-              <p className="text-sm font-bold">
-                {Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(Number(booking.service.price))}
-              </p>
-            </div>
-            {/* Data */}
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm text-gray-400">Data</h2>
-              <p className="text-sm">
-                {format(booking.date, "d 'de' MMMM", {
-                  locale: ptBR,
-                })}
-              </p>
-            </div>
-            {/* Horário */}
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm text-gray-400">Horário</h2>
-              <p className="text-sm">
-                {format(booking.date, "HH:mm", { locale: ptBR })}
-              </p>
-            </div>
-            {/* Barbearia */}
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm text-gray-400">Barbearia</h2>
-              <p className="text-sm">{barberShop.name}</p>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="mb-3 mt-6">
+          <BookingSummary
+            barbershop={barberShop}
+            selectedDate={booking.date}
+            service={booking.service}
+          />
+        </div>
 
         <div className="space-y-3">
           {barberShop.phones.map((phone, index) => (
